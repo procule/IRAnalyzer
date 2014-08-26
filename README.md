@@ -12,22 +12,24 @@ I have only compiled this plugin on Linux
 
 **Compile the plugin:**
 
-Remove all the files in the *source/* folder and copy the files this repository in it (.cpp, .h files)
+Remove all the files in the *source/* folder and copy the files of this repository in it (.cpp, .h files)
 Apply this patch on 'build_analyzer.py':
 
 	41,42c41,42
-	< include_paths = [ "include" ]
-	< link_paths = [ "lib" ]
+	< include_paths = [ "../include" ]
+	< link_paths = [ "../lib" ]
 	---
-	> include_paths = [ "../include" ]
-	> link_paths = [ "../lib" ]
+	> include_paths = [ "include" ]
+	> link_paths = [ "lib" ]
 
 If you are using a 64 bits compiler, apply this patch:
 
 	43c43
-	< link_dependencies = [ "-lAnalyzer64" ] #refers to libAnalyzer.dylib or libAnalyzer.so
+	< link_dependencies = [ "-lAnalyzer" ] #refers to libAnalyzer.dylib or libAnalyzer.so
 	---
-	> link_dependencies = [ "-lAnalyzer" ] #refers to libAnalyzer.dylib or libAnalyzer.so
+	> link_dependencies = [ "-lAnalyzer64" ] #refers to libAnalyzer.dylib or libAnalyzer.so
+
+In the root of the SDK folder: python build_analyzer.py
 
 **Install the plugin**
 
